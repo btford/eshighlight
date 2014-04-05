@@ -1,0 +1,23 @@
+{
+  "name": "eshighlight",
+  "version": "0.0.0",
+  "description": "highlight javascript code based on an esprima AST",
+  "main": "highlight.js",
+  "scripts": {
+    "test": "./node_modules/.bin/jasmine-node test"
+  },
+  "keywords": [
+    "code",
+    "highlight",
+    "color",
+    "esprima"
+  ],
+  "author": "Brian Ford",
+  "license": "MIT",
+  "dependencies": {
+    "esprima": "^1.1.1"
+  },
+  "devDependencies": {
+    "jasmine-node": "^1.14.3"
+  }
+}

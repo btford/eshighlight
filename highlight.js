@@ -1,5 +1,31 @@
 var esprima = require('esprima');
 
+var notControlFlow = [
+  'var',
+  'let',
+  'function'
+];
+
+var operator = [
+  '&&',
+  '||',
+  '>',
+  '<',
+  '>=',
+  '<=',
+  '=',
+  '+',
+  '-',
+  '*',
+  '/',
+  '!',
+  '-=',
+  '+=',
+  '*=',
+  '/=',
+  '==',
+  '==='
+];
 
 var ignoredTypes = {
   punctuator: true
@@ -28,8 +54,14 @@ module.exports = function highlight (src) {
 
   tokens.forEach(function (token) {
     var type = token.type.toLowerCase();
-    var range = types[token.range.join(',')];
     var text = token.value;
+    if (type === 'keyword' && notControlFlow.indexOf(text) === -1) {
+      type = 'control-flow';
+    }
+    if (type === 'punctuator' && operator.indexOf(text) > -1) {
+      type = 'operator';
+    }
+    var range = types[token.range.join(',')];
     if (range &&
         range.substr(-7) === '.params') {
       token.transformed = span(text, 'param');

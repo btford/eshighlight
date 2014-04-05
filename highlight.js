@@ -8,10 +8,19 @@ var ignoredTypes = {
 module.exports = function highlight (src) {
   var ast = esprima.parse(src, {
     tokens: true,
-    range: true
+    range: true,
+    comment: true
   });
 
-  var tokens = ast.tokens;
+  tokens = ast.tokens.concat(ast.comments.map(function (comment) {
+    comment.type = comment.type + '-comment';
+    comment.value = src.slice(comment.range[0], comment.range[1]);
+    return comment;
+  }));
+
+  tokens = tokens.sort(function (a, b) {
+    return a.range[0] < b.range[0] ? -1 : 1;
+  });
 
   var types = {};
 
@@ -20,11 +29,12 @@ module.exports = function highlight (src) {
   tokens.forEach(function (token) {
     var type = token.type.toLowerCase();
     var range = types[token.range.join(',')];
+    var text = token.value;
     if (range &&
         range.substr(-7) === '.params') {
-      token.transformed = span(token.value, 'param');
+      token.transformed = span(text, 'param');
     } else {
-      token.transformed = ignoredTypes[type] ? token.value : span(token.value, type);
+      token.transformed = ignoredTypes[type] ? text : span(text, type);
     }
   });
 

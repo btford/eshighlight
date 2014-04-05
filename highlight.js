@@ -19,11 +19,9 @@ module.exports = function highlight (src) {
 
   tokens.forEach(function (token) {
     var type = token.type.toLowerCase();
-    var range = types[token.range.join(',');
-    if (range] &&
-        range].substr(-7) === '.params'
-        ) {
-
+    var range = types[token.range.join(',')];
+    if (types[range] &&
+        types[range].substr(-7) === '.params') {
       token.transformed = span(token.value, 'param');
     } else {
       token.transformed = ignoredTypes[type] ? token.value : span(token.value, type);

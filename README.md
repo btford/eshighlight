@@ -1,12 +1,17 @@
 # eshighlight [![Build Status](https://travis-ci.org/btford/eshighlight.png?branch=master)](https://travis-ci.org/btford/eshighlight)
 
+JavaScript code highlighter based on [esprima](http://esprima.org/).
+
 ## Install
 
 ```
 npm install eshighlight
 ```
 
+
 ## Usage
+
+Takes a JavaScript string, returns an html string.
 
 ```javascript
 var highlight = require('eshighlight');

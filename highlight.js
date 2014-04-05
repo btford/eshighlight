@@ -46,10 +46,6 @@ module.exports = function highlight (src) {
     buffer += tokens[i].transformed;
   }
 
-  buffer = buffer.split('\n').map(line).join('\n');
-
-  buffer = pre(buffer);
-
   return buffer;
 
   function traverse (node, type) {
@@ -77,10 +73,6 @@ function div (contents, classes) {
 
 function span (contents, classes) {
   return elt('span', contents, classes);
-}
-
-function pre (contents, classes) {
-  return elt('pre', contents, classes);
 }
 
 function elt (name, content, classes) {

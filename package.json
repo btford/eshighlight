@@ -19,5 +19,9 @@
   },
   "devDependencies": {
     "jasmine-node": "^1.14.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/btford/eshighlight"
   }
 }

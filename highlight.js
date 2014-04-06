@@ -3,6 +3,7 @@ var esprima = require('esprima');
 var notControlFlow = [
   'var',
   'let',
+  'const',
   'function'
 ];
 

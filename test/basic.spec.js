@@ -22,6 +22,11 @@ describe('highlight', function () {
         .toBe('<span class="control-flow">if</span> (<span class="identifier">x</span>) <span class="identifier">y</span>();');
   });
 
+  it('should highlight const', function () {
+    expect(highlight('const three = 3;'))
+        .toBe('<span class="keyword">const</span> <span class="identifier">three</span> <span class="operator">=</span> <span class="numeric">3</span>;');
+  });
+
   it('should highlight comments', function () {
     expect(highlight('// hello'))
         .toBe('<span class="line-comment">// hello</span>');

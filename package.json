@@ -1,6 +1,6 @@
 {
   "name": "eshighlight",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "highlight javascript code based on an esprima AST",
   "main": "highlight.js",
   "scripts": {
